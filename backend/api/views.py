@@ -10,10 +10,7 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import exceptions
 
-from api.authentication import (
-    CustomBasicAuthentication,
-    CSRFExemptSessionAuthentication
-)
+from api.authentication import CustomBasicAuthentication
 from api.serializers import UserSerializer
 
 
@@ -26,7 +23,7 @@ def login(request: Request) -> Response:
 
 
 @api_view(["POST"])
-@authentication_classes([CSRFExemptSessionAuthentication])
+@authentication_classes([SessionAuthentication])
 @permission_classes([IsAuthenticated])
 def logout(request: Request) -> Response:
     django_logout(request)

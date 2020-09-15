@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import { AppContext, AppContextType } from "./contexts";
 import * as models from "./models";
@@ -31,10 +32,17 @@ function App() {
     }
   };
   const logout = async () => {
+    const csrfToken = Cookies.get("csrftoken");
+    const headers = new Headers();
+    if (csrfToken) {
+      headers.set("X-CSRFTOKEN", csrfToken);
+    }
+
     try {
       await fetch("http://127.0.0.1:8000/api/auth/logout", {
         method: "POST",
         credentials: "include",
+        headers,
       });
       setAppContext((ctx) => {
         const { user, ...newCtx } = ctx;
