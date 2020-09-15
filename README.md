@@ -10,7 +10,7 @@ TL;DR just use regular Django [`login`](https://docs.djangoproject.com/en/3.1/to
 
 # Why use cookies and sessions?
 
-Answer coming soon via a blog post at mikesukmanowsky.com.
+For a full explanation, check out [this blog post](https://mikesukmanowsky.com/authentication-with-django-and-spas/).
 
 # The Approach
 
