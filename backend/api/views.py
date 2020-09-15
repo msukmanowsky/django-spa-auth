@@ -12,13 +12,13 @@ from rest_framework import exceptions
 
 from api.authentication import (
     CustomBasicAuthentication,
-    CsrfExemptSessionAuthentication,
+    CSRFExemptSessionAuthentication
 )
 from api.serializers import UserSerializer
 
 
 @api_view(["POST"])
-@authentication_classes([CustomBasicAuthentication, CsrfExemptSessionAuthentication])
+@authentication_classes([CustomBasicAuthentication, SessionAuthentication])
 def login(request: Request) -> Response:
     # Important, this sets the session cookie on the response
     django_login(request, request.user)
@@ -26,7 +26,7 @@ def login(request: Request) -> Response:
 
 
 @api_view(["POST"])
-@authentication_classes([CsrfExemptSessionAuthentication])
+@authentication_classes([CSRFExemptSessionAuthentication])
 @permission_classes([IsAuthenticated])
 def logout(request: Request) -> Response:
     django_logout(request)
