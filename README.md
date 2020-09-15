@@ -25,8 +25,6 @@ The two files to look at are:
 
 In [authentication.py](backend/api/authentication.py), we define a `CustomBasicAuthentication` class which stops DRF from sending a `WWW-Authenticate` header so browser don't give us an auth popup.
 
-We also create a `CsrfExemptSessionAuthentication` which does pretty much what it says.
-
 For logging in, the important part is to use `CustomBasicAuthentication` as an authentication class and then to use Django's standard `login()` method.
 
 ### Frontend
