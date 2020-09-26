@@ -35,3 +35,14 @@ Files to look at are:
 
 Specifically how `login` and the initial authentication check is performed (via `useEffect`).
 
+# Running this Code
+
+You'll need Python 3 and Node JS installed locally before you begin.
+
+1. Clone the repo `git clone https://github.com/msukmanowsky/django-spa-auth.git`
+2. [Create a Python virtualenv](https://docs.python.org/3/library/venv.html) for your backend.
+3. With your new virtualenv, run `(cd backend && python -m pip install -r requirements.txt && python manage.py migrate && python manage.py createsuperuser)` and follow the instructions to create a new superuser.
+4. Run `(cd backend && python manage.py runserver)`
+5. In a separate shell, run `(cd webapp && npm i && npm run start)`
+6. Open your browser to [http://127.0.0.1:3000/](http://127.0.0.1:3000/) (**important** do _not_ use `localhost` as cookies are not saved on `localhost`)
+7. Try logging in with your new username/password.
